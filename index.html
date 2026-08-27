@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>A4U</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A4U — Ayal, independent software & web developer. Live and in-progress projects." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+/>
+<style>
+  :root {
+    --paper: #f4f5f0;
+    --surface: #fbfbf8;
+    --surface-2: #eceee7;
+    --border: #dee1d8;
+    --ink: #14181a;
+    --ink-muted: #5c655d;
+    --ink-faint: #8b9289;
+    --accent: #0d6d63;
+    --accent-ink: #f6fbfa;
+    --accent-soft: #e1efec;
+    --live: #1f7a4d;
+    --live-bg: #e2f2e8;
+    --dev: #93690a;
+    --dev-bg: #fbf0d9;
+    --shelved: #6b675e;
+    --shelved-bg: #eeece5;
+    --shadow: 0 1px 2px rgba(20, 24, 26, 0.04), 0 10px 30px -16px rgba(20, 24, 26, 0.16);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #10140f;
+      --surface: #171d16;
+      --surface-2: #1d241b;
+      --border: #2a332680;
+      --ink: #edf1ea;
+      --ink-muted: #a3ab9d;
+      --ink-faint: #6f776a;
+      --accent: #5cd9c4;
+      --accent-ink: #0b1a17;
+      --accent-soft: rgba(92, 217, 196, 0.13);
+      --live: #6bd499;
+      --live-bg: rgba(107, 212, 153, 0.13);
+      --dev: #e6ba55;
+      --dev-bg: rgba(230, 186, 85, 0.13);
+      --shelved: #a9a99a;
+      --shelved-bg: rgba(169, 169, 154, 0.13);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -16px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #10140f;
+    --surface: #171d16;
+    --surface-2: #1d241b;
+    --border: #2a332680;
+    --ink: #edf1ea;
+    --ink-muted: #a3ab9d;
+    --ink-faint: #6f776a;
+    --accent: #5cd9c4;
+    --accent-ink: #0b1a17;
+    --accent-soft: rgba(92, 217, 196, 0.13);
+    --live: #6bd499;
+    --live-bg: rgba(107, 212, 153, 0.13);
+    --dev: #e6ba55;
+    --dev-bg: rgba(230, 186, 85, 0.13);
+    --shelved: #a9a99a;
+    --shelved-bg: rgba(169, 169, 154, 0.13);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -16px rgba(0, 0, 0, 0.6);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    direction: rtl;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    direction: rtl;
+    font-family: "Assistant", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 40px) 48px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: clamp(40px, 9vw, 88px) 0 clamp(36px, 7vw, 60px);
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 28px;
+  }
+
+  .mark-glyph {
+    font-family: "Frank Ruhl Libre", Georgia, serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 3px;
+    padding: 3px 9px;
+  }
+
+  .mark-role {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: "Frank Ruhl Libre", Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-lede {
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.65;
+    color: var(--ink-muted);
+    max-width: 62ch;
+    margin: 0 0 30px;
+  }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    filter: brightness(1.06);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--ink);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-arrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+  }
+
+  /* ---------- Section shell ---------- */
+
+  .section {
+    padding: clamp(40px, 8vw, 64px) 0 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 0 28px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    font-family: "Frank Ruhl Libre", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 34px);
+    margin: 0;
+  }
+
+  .section-count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- Project grid ---------- */
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .card-thumb {
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    background: var(--surface-2);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--border);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .card h3 {
+    font-family: "Frank Ruhl Libre", Georgia, serif;
+    font-weight: 700;
+    font-size: 21px;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .status {
+    flex: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .status[data-s="live"] {
+    color: var(--live);
+    background: var(--live-bg);
+  }
+
+  .status[data-s="dev"] {
+    color: var(--dev);
+    background: var(--dev-bg);
+  }
+
+  .status[data-s="private"] {
+    color: var(--shelved);
+    background: var(--shelved-bg);
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .stack span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    background: var(--surface-2);
+    border-radius: 5px;
+    padding: 3px 7px;
+    direction: ltr;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .card-link .btn-arrow {
+    transition: transform 0.15s ease;
+  }
+
+  .card-link:hover .btn-arrow {
+    transform: translateX(-3px);
+  }
+
+  .card-noln {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+
+  /* ---------- Footer ---------- */
+
+  .foot {
+    margin-top: clamp(56px, 9vw, 88px);
+    padding-top: 26px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--ink-faint);
+    font-size: 13.5px;
+  }
+
+  .foot a {
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .foot a:hover {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+<div class="page" dir="rtl" lang="he">
+  <header class="hero">
+    <p class="mark">
+      <span class="mark-glyph">A4U</span>
+      <span class="mark-role">Ayal · מפתח תוכנה ואתרים עצמאי</span>
+    </p>
+    <h1>בונה מערכות שעובדות,<br /><em>לא רק דמואים.</em></h1>
+    <p class="hero-lede">
+      פיתוח פול-סטאק לעסקים ולמשימות ספציפיות — מפלטפורמת תיווך דירות עם מפה חיה,
+      דרך מערכת תורים שרצה בפרודקשן, ועד כלי AI שקוראים חשבוניות ומסווגים אותן
+      לבד. כל פרויקט כאן נבנה, רץ, ותוחזק על ידי.
+    </p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/ayal408" target="_blank" rel="noopener">
+        GitHub <span class="btn-arrow">←</span>
+      </a>
+      <a class="btn btn-ghost" href="https://levmenachem.duckdns.org" target="_blank" rel="noopener">
+        פרויקט חי לדוגמה <span class="btn-arrow">←</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="section-head">
+      <h2>פרויקטים</h2>
+      <span class="section-count">6 / מתעדכן</span>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer class="foot">
+    <span>A4U — עודכן 2026</span>
+    <a href="https://github.com/ayal408" target="_blank" rel="noopener">github.com/ayal408</a>
+  </footer>
+</div>
+
+<script>
+  // Each entry: name, description, status (live | dev | private), stack, link (optional), image (optional).
+  // Add new projects here — image can be a URL or omitted to keep the card typographic.
+  const PROJECTS = [
+    {
+      name: "מערכת ניהול תורים לטיפולים",
+      description:
+        "מערכת קביעת תורים מלאה למרפאה — יומן, ניהול מטופלים והתראות, בפרודקשן ומשרתת משתמשים בפועל.",
+      status: "live",
+      stack: ["Python", "PostgreSQL", "Docker", "DuckDNS"],
+      link: "https://levmenachem.duckdns.org",
+    },
+    {
+      name: "NexusDB",
+      description:
+        "ספריית Python בקוד פתוח: ממשק Repository / Unit-of-Work אחיד מעל PostgreSQL, MySQL, SQLite, MongoDB ו-Qdrant — כתוב פעם אחת, תחליף מסד נתונים בלי לגעת בלוגיקה.",
+      status: "live",
+      stack: ["Python", "PostgreSQL", "MongoDB", "Qdrant"],
+      link: "https://github.com/ayal408/nexusdb",
+    },
+    {
+      name: "Domix",
+      description:
+        "פלטפורמת תיווך דירות עם חיפוש על מפה חיה, מסננים ומועדפים. ארכיטקטורת מיקרו-שירותים — שרת אימות נפרד משרת הנתונים, מאחורי שער Nginx.",
+      status: "dev",
+      stack: ["React", "TypeScript", "ASP.NET Core", "PostgreSQL", "Docker"],
+      link: "https://github.com/ayal408/domix",
+    },
+    {
+      name: "ERP ישראלי",
+      description:
+        "פלטפורמת הנהלת חשבונות ישראלית — סכמת מסד נתונים לזהות, ריבוי-דיירים וביקורת, בבנייה לפי סקירת ארכיטקטורה מסודרת.",
+      status: "dev",
+      stack: [".NET 10", "React", "Docker"],
+      link: "https://github.com/ayal408/israeli-erp",
+    },
+    {
+      name: "תוסף לחשבשבת",
+      description:
+        "אפליקציית דסקטופ שמרחיבה את חשבשבת בממשק React מודרני — עוקפת את מגבלות הממשק המקורי לתהליכים חוזרים.",
+      status: "dev",
+      stack: ["Electron", "React", "TypeScript"],
+      link: null,
+    },
+    {
+      name: "עיבוד חשבוניות מבוסס AI",
+      description:
+        "צינור שקורא חשבוניות סרוקות (OCR + מודל ראייה), מחלץ שדות, מסווג לפי סוג הוצאה ומזין ישירות למנוע הנהלת החשבונות — בלי הקלדה ידנית.",
+      status: "private",
+      stack: ["Python", "OCR", "Vision LLM"],
+      link: null,
+    },
+  ];
+
+  const STATUS_LABEL = { live: "חי", dev: "בפיתוח", private: "פרטי" };
+
+  const grid = document.getElementById("grid");
+
+  PROJECTS.forEach((p, i) => {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.style.animationDelay = 0.35 + i * 0.06 + "s";
+
+    const thumb = p.image ? `<div class="card-thumb" style="background-image:url('${p.image}')"></div>` : "";
+
+    const linkHtml = p.link
+      ? `<a class="card-link" href="${p.link}" target="_blank" rel="noopener">מעבר לפרויקט <span class="btn-arrow">←</span></a>`
+      : `<span class="card-noln">ללא קישור ציבורי</span>`;
+
+    card.innerHTML = `
+      ${thumb}
+      <div class="card-top">
+        <h3>${p.name}</h3>
+        <span class="status" data-s="${p.status}">${STATUS_LABEL[p.status]}</span>
+      </div>
+      <p>${p.description}</p>
+      <div class="stack">${p.stack.map((s) => `<span>${s}</span>`).join("")}</div>
+      ${linkHtml}
+    `;
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
