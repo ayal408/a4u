@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">A4U — geometric teal and gold icon</title>
+<desc id="desc">White angular A and U with a gold four inside a dark teal rounded square.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#147d71"/><stop offset="1" stop-color="#093d3a"/></linearGradient></defs>
+<rect width="256" height="256" rx="56" fill="url(#bg)"/>
+<rect x="9" y="9" width="238" height="238" rx="48" fill="none" stroke="#fff" stroke-opacity=".17" stroke-width="2"/>
+<path d="M35 176 80 73h27l43 103h-26l-9-24H70l-10 24H35Zm45-46h26L93 94 80 130Z" fill="#fff"/>
+<path d="M152 80v59c0 10 5 16 15 16s16-6 16-16V80h27v60c0 26-15 40-43 40-27 0-42-14-42-40V80h27Z" fill="#fff"/>
+<path d="M111 121 147 67h22v54h12v18h-12v22h-22v-22h-36v-18Zm36 0V94l-18 27h18Z" fill="#ffd479" stroke="#0b504b" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="207" cy="48" r="6" fill="#ffd479"/>
+</svg>
