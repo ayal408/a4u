@@ -610,6 +610,16 @@
                 border-radius: 2px;
             }
         </style>
+        <style>
+            /* Tidy buttons: the page is RTL but Bootstrap's me-* spacing is left-to-right, so icons touched the text.
+               Spacing between icon and text now comes from "gap" for every button. */
+            .btn i, .project-links a i { margin: 0 !important; }
+            .hero-cta .btn, .contact-links .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+            /* Project buttons: one tidy row that wraps with equal spacing, equal heights */
+            .project-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+            .project-links a { margin: 0; padding: 8px 16px; font-size: 0.85rem; line-height: 1.3; white-space: nowrap; flex: 0 0 auto; }
+            .project-links a:hover { transform: none; }
+        </style>
     </head>
     <body id="body">
         <!-- Fixed Navigation -->
@@ -684,21 +694,6 @@
                     <p class="section-sub fade-in">מדגם מהמאגר שלי — פרויקטים חיים, בפיתוח, ופרויקטים פרטיים.</p>
                     <div class="project-grid">
                         <div class="project-card fade-in">
-                            <div class="project-image"><i class="fas fa-calendar-check"></i></div>
-                            <div class="project-content">
-                                <div class="project-top">
-                                    <h4>מערכת ניהול תורים לטיפולים</h4>
-                                    <span class="status" data-s="live">חי</span>
-                                </div>
-                                <p>מערכת קביעת תורים מלאה למרפאה — יומן, ניהול מטופלים והתראות, בפרודקשן ומשרתת משתמשים בפועל.</p>
-                                <div class="tech-tags"><span>Python</span><span>PostgreSQL</span><span>Docker</span><span>DuckDNS</span></div>
-                                <div class="project-links">
-                                    <a href="https://levmenachem.duckdns.org" target="_blank" rel="noopener"><i class="fas fa-external-link-alt me-1"></i>פרויקט חי</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card fade-in">
                             <div class="project-image"><i class="fas fa-database"></i></div>
                             <div class="project-content">
                                 <div class="project-top">
@@ -709,6 +704,7 @@
                                 <div class="tech-tags"><span>Python</span><span>PostgreSQL</span><span>MongoDB</span><span>Qdrant</span></div>
                                 <div class="project-links">
                                     <a href="https://github.com/ayal408/krossdb" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>קוד מקור</a>
+                                    <a href="https://pypi.org/project/krossdb/" target="_blank" rel="noopener"><i class="fas fa-box-open me-1"></i>הספרייה ב־PyPI</a>
                                     <a href="https://ayal408.github.io/krossdb/" target="_blank" rel="noopener"><i class="fas fa-book me-1"></i>תיעוד ואתר הספריה</a>
                                 </div>
                             </div>
@@ -735,7 +731,7 @@
                             <div class="project-content">
                                 <div class="project-top">
                                     <h4>Domix</h4>
-                                    <span class="status" data-s="dev">בפיתוח</span>
+                                    <span class="status" data-s="live">חי</span>
                                 </div>
                                 <p>פלטפורמת תיווך דירות עם חיפוש על מפה חיה, מסננים ומועדפים. ארכיטקטורת מיקרו-שירותים — שרת אימות נפרד משרת הנתונים, מאחורי שער Nginx.</p>
                                 <div class="tech-tags"><span>React</span><span>TypeScript</span><span>ASP.NET Core</span><span>PostgreSQL</span><span>Docker</span></div>
@@ -746,30 +742,14 @@
                         </div>
 
                         <div class="project-card fade-in">
-                            <div class="project-image"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div class="project-image"><i class="fas fa-calendar-check"></i></div>
                             <div class="project-content">
                                 <div class="project-top">
-                                    <h4>ERP ישראלי</h4>
-                                    <span class="status" data-s="dev">בפיתוח</span>
+                                    <h4>התחלה — קליטת עובדים</h4>
+                                    <span class="status" data-s="live">חי</span>
                                 </div>
-                                <p>פלטפורמת הנהלת חשבונות ישראלית — סכמת מסד נתונים לזהות, ריבוי-דיירים וביקורת, בבנייה לפי סקירת ארכיטקטורה מסודרת.</p>
-                                <div class="tech-tags"><span>.NET 10</span><span>React</span><span>Docker</span></div>
-                                <div class="project-links">
-                                    <a href="https://github.com/ayal408/israeli-erp" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>קוד מקור</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card fade-in">
-                            <div class="project-image"><i class="fas fa-plug"></i></div>
-                            <div class="project-content">
-                                <div class="project-top">
-                                    <h4>תוסף לחשבשבת</h4>
-                                    <span class="status" data-s="dev">בפיתוח</span>
-                                </div>
-                                <p>אפליקציית דסקטופ שמרחיבה את חשבשבת בממשק React מודרני — עוקפת את מגבלות הממשק המקורי לתהליכים חוזרים.</p>
-                                <div class="tech-tags"><span>Electron</span><span>React</span><span>TypeScript</span></div>
-                                <div class="project-links"><span class="no-link">ללא קישור ציבורי</span></div>
+                                <p>קליטת עובדים דיגיטלית לחשבי שכר: קישור אישי לכל עובד עם אימות זהות במייל או ב-Google, טופס 101 רשמי שמתמלא אוטומטית, העלאת מסמכים מהטלפון, חתימה דיגיטלית ולוח בקרה עם התקדמות בזמן אמת.</p>
+                                <div class="tech-tags"><span>FastAPI</span><span>krossdb</span><span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>MongoDB</span></div>
                             </div>
                         </div>
 
@@ -790,11 +770,98 @@
                             <div class="project-image"><i class="fas fa-truck-fast"></i></div>
                             <div class="project-content">
                                 <div class="project-top">
-                                    <h4>Amandex — ניהול יבוא-יצוא</h4>
+                                    <h4>Novaro — ניהול סיטונאות ויבוא</h4>
                                     <span class="status" data-s="team">פרויקט צוותי</span>
                                 </div>
-                                <p>מערכת לניהול תהליכי יבוא ויצוא, עם שרת Python ולקוח React, כיסוי בדיקות ב-pytest והרצה מלאה ב-Docker. פרויקט בשיתוף צוות תחת ארגון חיצוני.</p>
+                                <p>Novaro — מערכת לניהול תהליכי יבוא ויצוא, עם שרת Python ולקוח React, כיסוי בדיקות ב-pytest והרצה מלאה ב-Docker. פרויקט בשיתוף צוות תחת ארגון חיצוני.</p>
                                 <div class="tech-tags"><span>Python</span><span>React</span><span>TypeScript</span><span>Docker</span><span>Pytest</span></div>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-chart-line"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>NEXORA — ניהול עסק חכם</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>מערכת חכמה לניהול לקוחות, משימות, פרויקטים, כספים ושיחות קוליות — במקום אחד.</p>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-rocket"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>Orbit — ניהול עסק במקום אחד</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>מערכת עברית לניהול משימות עם טיימר, פרויקטים, לידים ולקוחות, וכספים, עם לוח זמנים וחיזוי.</p>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-comments"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>ChatApp — צ'אט בזמן אמת</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>אפליקציית צ'אט עם חדרים, הודעות בזמן אמת, צירוף קבצים, תגובות ואמוג'י, וחדר עם בינה מלאכותית של Gemini.</p>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-phone-volume"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>קולית — ניהול קו חכם</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>מערכת מקורית לניהול קווי ימות המשיח: סייר שלוחות, עורך הגדרות, סטודיו תהליכים ודוחות.</p>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-gift"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>קופסת ההפתעות</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>משחקים וכלים בדפדפן, ישר מהקופסה — בלי התקנה ובלי הרשמה.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/ayal408/surprise-box" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>קוד מקור</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-scale-balanced"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>מיקוד משפט עסקי</h4>
+                                    <span class="status" data-s="live">חי</span>
+                                </div>
+                                <p>אתר לימוד ממוקד לבחינה: שיעורים, כרטיסיות, חידונים ומבחן תרגול ל-13 הנושאים המחייבים, עם נוסח מקורי של סעיפי החוק.</p>
+                                <div class="project-links">
+                                    <a href="https://github.com/ayal408/business-law-study" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>קוד מקור</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card fade-in">
+                            <div class="project-image"><i class="fas fa-stethoscope"></i></div>
+                            <div class="project-content">
+                                <div class="project-top">
+                                    <h4>netfree-doctor</h4>
+                                    <span class="status" data-s="live">קוד פתוח</span>
+                                </div>
+                                <p>כלי שמאבחן בעיות של "זה לא עובד בנטפרי", מסביר בעברית ומציע תיקונים בטוחים. לא עוקף את הסינון.</p>
+                                <div class="tech-tags"><span>TypeScript</span></div>
+                                <div class="project-links">
+                                    <a href="https://github.com/ayal408/netfree-doctor" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i>קוד מקור</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -922,9 +989,7 @@
             <span>A4U — <span id="year"></span></span> ·
             <a href="https://github.com/ayal408" target="_blank" rel="noopener">github.com/ayal408</a>
         </footer>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-        <script>
+<script>
             document.getElementById('year').textContent = new Date().getFullYear();
 
             function scrollToSection(sectionId, event) {
@@ -963,3 +1028,4 @@
         </script>
     </body>
 </html>
+
